@@ -1,0 +1,55 @@
+﻿@model Entity.MerchantEntity
+@{
+    ViewData["Title"] = "GetByMerchantId";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm p-4">
+        <div class="d-flex justify-content-center align-items-center">
+            <div class="col-xl-8 col-lg-8 col-12">
+                <div class="box box-widget widget-user-2">
+                    <div class="widget-user-header bg-primary d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center">
+                            <div class="widget-user-image">
+                                <img class="rounded-circle bg-success-light" src="../images/avatar/avatar-5.png" alt="User Avatar">
+                            </div>
+                            <div class="ms-3">
+                                <h3 class="widget-user-username mb-0">@Model.Name</h3>
+                                <h6 class="widget-user-desc">@Model.MerchantId</h6>
+                            </div>
+                        </div>
+                        <a href="/User/MerchantEdit/@Model.Id" class="text-white">
+                            <i class="ti-pencil"></i>
+                        </a>
+                    </div>
+                    <div class="box-footer no-padding">
+                        <ul class="nav d-block nav-stacked">
+                            <li class="nav-item fs-5"><a class="nav-link">Email <span class="pull-right badge bg-info-light">@Model.Email</span></a></li>
+                            <li class="nav-item fs-5"><a class="nav-link">Phone No <span class="pull-right badge bg-success-light">@Model.PhoneNo</span></a></li>
+                            <li class="nav-item fs-5"><a class="nav-link">Domain <span class="pull-right badge bg-warning-light">@Model.Domain</span></a></li>
+                            <li class="nav-item fs-5"><a class="nav-link">Commission <span class="pull-right badge bg-danger-light">@Model.Commission</span></a></li>
+                            <li class="nav-item fs-5"><a class="nav-link">Nature Business <span class="pull-right badge bg-info-light">@Model.NatureBusiness</span></a></li>
+                            <li class="nav-item fs-5"><a class="nav-link">Tax <span class="pull-right badge bg-success-light">@Model.Tax</span></a></li>
+                            <li class="nav-item fs-5"><a class="nav-link">Private Key <span class="pull-right badge bg-warning-light">@Model.PrivateKey</span></a></li>
+                            <li class="nav-item fs-5">
+                                <a class="nav-link">
+                                    Payment Mode
+                                    @if (Model.lstPaymentModeentity != null && Model.lstPaymentModeentity.Count != 0)
+                                    {
+                                        foreach (var items in Model.lstPaymentModeentity)
+                                        {
+                                            <span class="pull-right badge bg-secondary me-2">@items.Title</span>
+                                        }
+                                    }
+
+
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

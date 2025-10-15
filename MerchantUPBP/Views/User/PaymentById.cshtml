@@ -1,0 +1,50 @@
+﻿ @model Entity.MerchantPaymentEntity
+@{
+    ViewData["Title"] = "PaymentById";
+
+}
+
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card shadow-sm p-4">
+                <div class="d-flex justify-content-center align-items-center mt-4">
+                    <div class="col-xl-8 col-lg-8 col-12">
+                        <div class="box box-widget widget-user-2">
+                            <div class="widget-user-header bg-primary d-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-center">
+                                    <div class="widget-user-image">
+                                        <img class="rounded-circle bg-success-light" src="~/images/avatar/avatar-5.png" alt="User Avatar">
+                                    </div>
+                                    <div class="ms-3">
+                                        <h3 class="widget-user-username mb-0">@Model.Domain</h3>
+                                        <h6 class="widget-user-desc">Payment ID: @Model.Id</h6>
+                                    </div>
+                                </div>
+                                <a href="/User/PaymentById/@Model.Id" class="text-white">
+
+                                </a>
+                            </div>
+
+                            <div class="box-footer no-padding">
+                                <ul class="nav d-block nav-stacked">
+                                    <li class="nav-item fs-5"><a class="nav-link">Domain <span class="pull-right badge bg-info-light">@Model.Domain</span></a></li>
+                                    <li class="nav-item fs-5"><a class="nav-link">Amount <span class="pull-right badge bg-success-light">@Model.Amount</span></a></li>
+                                    <li class="nav-item fs-5"><a class="nav-link">Order ID <span class="pull-right badge bg-warning-light">@Model.OrderId</span></a></li>
+                                    <li class="nav-item fs-5"><a class="nav-link">Currency <span class="pull-right badge bg-danger-light">@Model.Currency</span></a></li>
+                                    <li class="nav-item fs-5"><a class="nav-link">Payment Method <span class="pull-right badge bg-info-light">@Model.PaymentMethod</span></a></li>
+                                    <li class="nav-item fs-5"><a class="nav-link">Status <span class="pull-right badge bg-success-light">@Model.Status</span></a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+

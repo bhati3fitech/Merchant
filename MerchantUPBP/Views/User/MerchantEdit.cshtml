@@ -1,0 +1,114 @@
+﻿@model Entity.MerchantEntity
+@{
+    ViewData["Title"] = "MerchantEdit";
+}
+
+<h1>MerchantEdit</h1>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="icon" href="https://master-admin-template.multipurposethemes.com/bs5/images/favicon.ico">
+
+
+	<link rel="stylesheet" href="~/css/vendors_css.css">
+	<link rel="stylesheet" href="~/css/style.css">
+	<link rel="stylesheet" href="~/css/skin_color.css">
+</head>
+<body class="hold-transition theme-primary bg-img" style="background-image: url(../images/auth-bg/bg-2.jpg)">
+	<div class="container h-p100">
+		<div class="card shadow-sm p-4">
+		<div class="row align-items-center justify-content-md-center h-p100">
+			<div class="col-12">
+				<div class="row justify-content-center g-0">
+					<div class="col-lg-6 col-md-6 col-12">
+						<div class="bg-white rounded10 shadow-lg">
+
+							<div class="p-40">
+								<form asp-action="MerchantEdit" asp-controller="User" method="post">
+									<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+									<div class="form-group">
+										<div class="input-group mb-3">
+											<span class="input-group-text bg-transparent text-danger"><i class="ti-user"></i></span>
+											<input asp-for="Name" type="text" required="" class="form-control ps-15 bg-transparent" placeholder="Full Name">
+											<span asp-validation-for="Name" class="text-danger"></span>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<div class="input-group mb-3">
+											<span class="input-group-text bg-transparent text-danger"><i class="ti-mobile"></i></span>
+											<input asp-for="PhoneNo" type="text" required="" class="form-control ps-15 bg-transparent" placeholder="Phone Number">
+											<span asp-validation-for="PhoneNo" class="text-danger"></span>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<div class="input-group mb-3">
+											<span class="input-group-text bg-transparent"><i class="ti-world"></i></span>
+											<input asp-for="Domain" type="text" required="" class="form-control ps-15 bg-transparent" placeholder="Domain">
+											<span asp-validation-for="Domain" class="text-danger"></span>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<div class="input-group mb-3">
+											<span class="input-group-text bg-transparent"><i class="ti-briefcase"></i> </span>
+											<input asp-for="NatureBusiness" type="text" required="" class="form-control ps-15 bg-transparent" placeholder="Nature of Business">
+											<span asp-validation-for="NatureBusiness" class="text-danger"></span>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label class="form-label">Payment Mode</label>
+										@if (Model.lstPaymentMode?.Any() ?? false)
+										{
+											<div class="demo-checkbox">
+												@foreach (var payment in Model.lstPaymentMode)
+												{
+													bool isChecked = Model.SelectedPaymentModes != null && Model.SelectedPaymentModes.Contains(payment.Id);
+													<input type="checkbox" id="md_checkbox_@payment.Id" class="filled-in chk-col-primary"
+														   value="@payment.Id" name="SelectedPaymentModes" @(isChecked ? "checked" : "") />
+													<label for="md_checkbox_@payment.Id">@payment.Title</label>
+												}
+											</div>
+										}
+										else
+										{
+											<div class="alert alert-info mb-0">No payment methods available</div>
+										}
+									</div>
+
+										<div class="text-center d-flex justify-content-center gap-2">
+											<button type="submit" class="btn btn-danger" style="width: 120px; padding: 4px 10px; font-size: 14px;">Save Changes</button>
+											<a href="@Url.Action("GetByMerchantId", "User")" class="btn btn-warning" style="width: 120px; padding: 4px 10px; font-size: 14px;">Cancel</a>
+										</div>
+
+								</form>
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+
+	<script src="~/js/vendors.min.js"></script>
+	<script src="~/js/pages/chat-popup.js"></script>
+	<script src="../assets/icons/feather-icons/feather.min.js"></script>
+	<script>
+		var errorMessage = "@TempData["Error"]";
+		if (errorMessage) {
+			alert(errorMessage);
+		}
+	</script>
+
+</body>
+</
